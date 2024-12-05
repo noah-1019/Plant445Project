@@ -1,0 +1,32 @@
+
+---
+title: "weatherGraph"
+output: pdf_document
+date: "2024-12-04"
+---
+
+```{r}
+
+# Load in packages
+
+library(ggplot2)
+library(lubridate)
+library(dplyr)
+
+myData<-Flagstaff_Weather
+myData<-myData%>%
+  mutate(YEAR=year(DATE))%>%
+  group_by(YEAR)%>%
+  summarise(averageTemp=mean(TMAX))
+
+# Group data by year
+
+
+
+P<-ggplot(data=myData, aes(x=YEAR,y=averageTemp))+geom_point()
+
+P
+
+# The graph is a lot more interesting with more data points
+
+```
